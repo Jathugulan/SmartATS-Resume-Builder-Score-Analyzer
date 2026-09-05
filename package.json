@@ -1,0 +1,19 @@
+{
+  "name": "smartats-monorepo",
+  "version": "1.0.0",
+  "description": "SmartATS - Production-Quality ATS Resume Builder & Score Analyzer",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build:client": "npm run build --prefix client",
+    "build": "npm run build:client",
+    "start": "npm run start --prefix server"
+  },
+  "keywords": ["smartats", "resume-builder", "ats-analyzer", "latex", "pdf"],
+  "author": "SmartATS Team",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
