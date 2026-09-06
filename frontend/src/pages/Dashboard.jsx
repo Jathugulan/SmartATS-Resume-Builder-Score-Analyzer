@@ -107,7 +107,7 @@ export default function Dashboard() {
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight" style={{ color: 'var(--text-primary)' }}>
               Welcome back, {user?.name || 'Candidate'}!
             </h1>
-            <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
               Active
             </span>
           </div>
@@ -223,8 +223,8 @@ export default function Dashboard() {
 
           <div className="flex items-center gap-2">
             <Link
-              to="/templates"
-              className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1 transition-colors"
+              to="/builder/templates"
+              className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 flex items-center gap-1 transition-colors"
             >
               Browse Template Gallery →
             </Link>

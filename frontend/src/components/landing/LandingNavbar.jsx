@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Menu, X, FileText } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 import ThemeToggleSwitch from '../common/ThemeToggleSwitch';
 
-export default function LandingNavbar({ onAuthTabChange, onOpenDemo }) {
+export default function LandingNavbar() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
+  const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const scrollToSection = (id) => {
@@ -82,25 +84,17 @@ export default function LandingNavbar({ onAuthTabChange, onOpenDemo }) {
           {/* Theme Toggle Switch */}
           <ThemeToggleSwitch size="sm" />
 
-          {/* Sign In Button */}
+          {/* Log In Button */}
           <button
-            onClick={() => {
-              onAuthTabChange?.('signin');
-              const el = document.getElementById('auth-section');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={() => navigate('/auth?mode=signin')}
             className="px-4 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white bg-slate-100 dark:bg-white/[0.06] hover:bg-slate-200 dark:hover:bg-white/[0.12] border border-slate-200 dark:border-white/[0.12] transition-all cursor-pointer shadow-sm"
           >
-            Sign In
+            Log In
           </button>
 
           {/* Get Started Button */}
           <button
-            onClick={() => {
-              onAuthTabChange?.('signup');
-              const el = document.getElementById('auth-section');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={() => navigate('/auth?mode=signup')}
             className="px-5 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-md shadow-indigo-600/30 hover:shadow-indigo-500/50 transition-all active:scale-95 cursor-pointer border border-white/20"
           >
             Get Started
@@ -161,20 +155,16 @@ export default function LandingNavbar({ onAuthTabChange, onOpenDemo }) {
             <button
               onClick={() => {
                 setMobileOpen(false);
-                onAuthTabChange?.('signin');
-                const el = document.getElementById('auth-section');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                navigate('/auth?mode=signin');
               }}
               className="w-full py-2.5 rounded-xl text-sm font-semibold text-slate-200 bg-white/[0.08] border border-white/[0.12] text-center"
             >
-              Sign In
+              Log In
             </button>
             <button
               onClick={() => {
                 setMobileOpen(false);
-                onAuthTabChange?.('signup');
-                const el = document.getElementById('auth-section');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                navigate('/auth?mode=signup');
               }}
               className="w-full py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-center shadow-lg shadow-indigo-600/30"
             >

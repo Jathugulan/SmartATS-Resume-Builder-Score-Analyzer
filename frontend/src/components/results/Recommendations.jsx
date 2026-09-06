@@ -10,10 +10,10 @@ export default function Recommendations({ recommendations }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.55 }}
-      className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm"
+      className="surface-card rounded-xl border p-6 shadow-sm"
     >
-      <h3 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
-        <Lightbulb className="text-amber-500" size={20} />
+      <h3 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: 'var(--text-primary)' }}>
+        <Lightbulb className="tone-text-warning" size={20} />
         Recommendations ({recommendations.length})
       </h3>
       <div className="space-y-3">
@@ -21,11 +21,11 @@ export default function Recommendations({ recommendations }) {
           <div key={i} className={`rounded-lg border p-4 ${getPriorityColor(rec.priority)}`}>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xs font-bold uppercase">{rec.priority}</span>
-              {rec.category && <span className="text-xs opacity-70">&middot; {rec.category}</span>}
+              {rec.category && <span className="text-xs opacity-80">&middot; {rec.category}</span>}
             </div>
-            <p className="text-sm font-medium text-slate-800">{rec.recommendation}</p>
+            <p className="text-sm font-medium" style={{ color: 'var(--text-primary)' }}>{rec.recommendation}</p>
             {rec.evidence && (
-              <p className="text-xs text-slate-500 mt-1">Evidence: {rec.evidence}</p>
+              <p className="text-xs mt-1" style={{ color: 'var(--text-secondary)' }}>Evidence: {rec.evidence}</p>
             )}
           </div>
         ))}

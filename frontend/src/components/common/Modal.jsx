@@ -13,10 +13,19 @@ export default function Modal({ isOpen, onClose, title, children }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative bg-white rounded-xl shadow-xl max-w-md w-full mx-4 p-6 z-10">
+      <div className="relative max-w-md w-full mx-4 p-6 z-10 rounded-xl shadow-xl"
+        style={{ backgroundColor: 'var(--bg-modal)', border: '1px solid var(--border-base)', color: 'var(--text-primary)' }}
+      >
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-slate-800">{title}</h3>
-          <button onClick={onClose} className="p-1 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-600">
+          <h3 className="text-lg font-semibold" style={{ color: 'var(--text-primary)' }}>{title}</h3>
+          <button
+            onClick={onClose}
+            className="p-1 rounded-lg transition-colors cursor-pointer"
+            style={{ color: 'var(--text-secondary)' }}
+            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--bg-muted)'; e.currentTarget.style.color = 'var(--text-primary)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--text-secondary)'; }}
+            aria-label="Close"
+          >
             <X size={20} />
           </button>
         </div>

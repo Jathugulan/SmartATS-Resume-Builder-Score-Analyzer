@@ -474,25 +474,25 @@ export default function ResumeEditor() {
   return (
     <div className="flex flex-col h-[calc(100vh-5rem)] max-w-[1700px] mx-auto space-y-4">
       {/* Top Header Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 bg-slate-900/90 rounded-2xl border border-slate-800 shadow-xl shrink-0">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl surface-card shadow-xl shrink-0">
         <div className="flex items-center gap-3">
           <button
-            onClick={() => navigate('/templates')}
-            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-all cursor-pointer"
+            onClick={() => navigate('/builder/templates')}
+            className="p-2 rounded-xl btn-secondary flex items-center justify-center cursor-pointer"
             title="Back to Template Gallery"
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-base font-bold text-white tracking-tight">
+              <h1 className="text-base font-bold tracking-tight" style={{ color: 'var(--text-primary)' }}>
                 LaTeX Resume Studio
               </h1>
-              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/30">
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold border" style={{ backgroundColor: 'var(--bg-tag)', color: 'var(--text-accent)', borderColor: 'var(--border-accent)' }}>
                 Single Data Architecture
               </span>
             </div>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs" style={{ color: 'var(--text-secondary)' }}>
               One common form • Exactly 4 ATS templates in strict section order
             </p>
           </div>

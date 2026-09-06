@@ -71,37 +71,37 @@ export default function CandidateCard({ candidate, onUpdate }) {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm relative group"
+        className="surface-card rounded-xl border p-6 shadow-sm relative group"
       >
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-start gap-4 min-w-0 flex-1">
-            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-              <User className="text-blue-600" size={24} />
+            <div className="w-12 h-12 rounded-full tone-info flex items-center justify-center shrink-0">
+              <User className="tone-text-info" size={24} />
             </div>
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-3 flex-wrap">
-                <h3 className="text-xl font-bold text-slate-800 truncate">{displayName}</h3>
+                <h3 className="text-xl font-bold truncate" style={{ color: 'var(--text-primary)' }}>{displayName}</h3>
                 {!nameDetected && user?.name && (
-                  <span className="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-medium border border-blue-200">
+                  <span className="text-xs tone-info px-2 py-0.5 rounded-full font-medium border">
                     Account Profile
                   </span>
                 )}
                 {!nameDetected && !user?.name && (
-                  <span className="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full font-medium border border-amber-200">
+                  <span className="text-xs tone-warning px-2 py-0.5 rounded-full font-medium border">
                     ⚠ Name not detected
                   </span>
                 )}
                 {!nameDetected && (
-                  <span className="text-xs text-slate-400">
+                  <span className="text-xs theme-text-tertiary">
                     — Click <strong>Edit Details</strong> to set your name
                   </span>
                 )}
               </div>
               {candidate.professionalTitle && (
-                <p className="text-sm text-blue-600 font-medium mt-0.5">{candidate.professionalTitle}</p>
+                <p className="text-sm tone-text-info font-medium mt-0.5">{candidate.professionalTitle}</p>
               )}
               {candidate.summary && (
-                <p className="text-sm text-slate-500 mt-2 line-clamp-2">{candidate.summary}</p>
+                <p className="text-sm theme-text-secondary mt-2 line-clamp-2">{candidate.summary}</p>
               )}
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function CandidateCard({ candidate, onUpdate }) {
           {onUpdate && (
             <button
               onClick={handleOpenEdit}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-600 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-200 rounded-lg transition-colors shrink-0"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium btn-secondary rounded-lg transition-colors shrink-0 cursor-pointer"
               title="Edit Candidate Details"
             >
               <Edit2 size={13} />
@@ -119,10 +119,10 @@ export default function CandidateCard({ candidate, onUpdate }) {
         </div>
 
         {fields.length > 0 && (
-          <div className="mt-4 pt-4 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+          <div className="mt-4 pt-4 theme-divider border-t grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
             {fields.map(({ icon: Icon, value, label }) => (
-              <div key={label} className="flex items-center gap-2 text-sm text-slate-600">
-                <Icon size={14} className="text-slate-400 shrink-0" />
+              <div key={label} className="flex items-center gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                <Icon size={14} className="theme-text-tertiary shrink-0" />
                 <span className="truncate">{value}</span>
               </div>
             ))}

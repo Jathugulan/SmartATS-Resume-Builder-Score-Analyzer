@@ -35,7 +35,7 @@ const navGroups = [
     title: 'RESUME STUDIO',
     items: [
       { to: '/resumes/new', label: 'New Resume', icon: FileCode, badge: 'Builder' },
-      { to: '/templates', label: 'LaTeX Templates', icon: LayoutTemplate, badge: '4 Designs' },
+      { to: '/builder/templates', label: 'LaTeX Templates', icon: LayoutTemplate, badge: '4 Designs' },
       { to: '/interview-prep', label: 'Interview Prep', icon: MessageSquareCode, badge: 'AI' },
     ],
   },
@@ -89,6 +89,28 @@ function SidebarContent({ onNavigate, user, onLogout }) {
 
       {/* Nav Groups */}
       <nav className="flex-1 px-3 py-4 space-y-6 overflow-y-auto">
+        {/* Prominent Scan Audit CTA — high contrast in both themes */}
+        <div className="px-1">
+          <NavLink
+            to="/upload"
+            onClick={onNavigate}
+            className="group flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-white shadow-lg shadow-indigo-600/30 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/40 hover:translate-y-[-1px] active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-300 cursor-pointer"
+            style={{ backgroundColor: 'var(--accent-hover, #4f46e5)' }}
+          >
+            <span
+              className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 shadow-inner"
+              style={{ backgroundColor: 'rgba(255,255,255,0.18)', color: '#ffffff' }}
+            >
+              <Sparkles className="w-4 h-4" />
+            </span>
+            <span className="flex flex-col leading-tight text-left">
+              <span className="text-[13px] font-extrabold tracking-tight">Run ATS Audit</span>
+              <span className="text-[10px] font-medium opacity-85">Scan your resume now</span>
+            </span>
+            <ArrowUpRight className="w-4 h-4 ml-auto opacity-80 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          </NavLink>
+        </div>
+
         {navGroups.map((group) => (
           <div key={group.title} className="space-y-1">
             <p className="px-3 text-[11px] font-bold uppercase tracking-wider" style={{ color: 'var(--text-tertiary)' }}>
@@ -104,7 +126,7 @@ function SidebarContent({ onNavigate, user, onLogout }) {
                     `group flex items-center justify-between px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
                       isActive
                         ? 'bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-md shadow-indigo-600/30 font-semibold'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
+                        : 'text-[var(--nav-inactive-text)] hover:text-[var(--nav-hover-text)] hover:bg-[var(--nav-hover-bg)]'
                     }`
                   }
                 >
@@ -174,7 +196,7 @@ function SidebarContent({ onNavigate, user, onLogout }) {
         )}
         <button
           onClick={onLogout}
-          className="flex items-center gap-2.5 w-full px-3 py-2 rounded-lg text-xs font-medium text-slate-500 hover:text-rose-500 hover:bg-rose-500/10 transition-all cursor-pointer"
+          className="flex items-center gap-2.5 w-full px-3 py-2 rounded-lg text-xs font-medium text-[var(--text-tertiary)] hover:text-[var(--text-danger)] hover:bg-[var(--bg-danger)] transition-all cursor-pointer"
         >
           <LogOut className="w-4 h-4" />
           <span>Sign Out</span>
@@ -192,7 +214,7 @@ export default function Sidebar() {
 
   const handleLogout = async () => {
     await logout();
-    navigate('/login');
+    navigate('/auth?mode=signin');
   };
 
   return (

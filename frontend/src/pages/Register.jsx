@@ -1,6 +1,7 @@
-import SmartATSLanding from './SmartATSLanding';
+import AuthPage from '../components/auth/AuthPage';
 
+// Dedicated Sign Up page (distinct route from Sign In).
 export default function Register() {
-  return <SmartATSLanding initialTab="signup" />;
+  return <AuthPage isSignup />;
 }
 

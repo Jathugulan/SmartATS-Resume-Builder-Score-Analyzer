@@ -26,11 +26,11 @@ export function useAppNav() {
   const { user } = useAuth();
   const navigate = useNavigate();
 
-  const goBuilder = () => (user ? navigate('/resumes/new') : navigate('/register'));
-  const goAnalyze = () => (user ? navigate('/upload') : navigate('/register'));
-  const goRegister = () => navigate('/register');
-  const goLogin = () => navigate('/login');
-  const goDashboard = () => (user ? navigate('/dashboard') : navigate('/register'));
+  const goBuilder = () => (user ? navigate('/resumes/new') : navigate('/auth?mode=signup'));
+  const goAnalyze = () => (user ? navigate('/upload') : navigate('/auth?mode=signup'));
+  const goRegister = () => navigate('/auth?mode=signup');
+  const goLogin = () => navigate('/auth?mode=signin');
+  const goDashboard = () => (user ? navigate('/dashboard') : navigate('/auth?mode=signup'));
 
   return { user, navigate, goBuilder, goAnalyze, goRegister, goLogin, goDashboard };
 }

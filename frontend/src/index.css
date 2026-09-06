@@ -833,3 +833,118 @@ button:focus-visible,
   outline-offset: 2px;
 }
 
+/* ══════════════════════════════════════════════════════════════════════
+   PREMIUM THEME-AWARE UTILITIES — Light + Dark both supported
+   Guarantees no text/icon is hidden by a background in either theme.
+══════════════════════════════════════════════════════════════════════ */
+
+/* ── Buttons (theme-aware variant classes) ─────────────────────────── */
+.btn-secondary {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  border: 1px solid var(--border-base);
+  transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.12s ease;
+}
+.btn-secondary:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+.btn-secondary:disabled {
+  background-color: var(--bg-muted);
+  color: var(--text-disabled);
+  border-color: var(--border-base);
+}
+
+.btn-danger {
+  background-color: var(--bg-danger);
+  color: var(--text-danger);
+  border: 1px solid color-mix(in srgb, var(--text-danger) 42%, transparent);
+  transition: background-color 0.18s ease, transform 0.12s ease;
+}
+.btn-danger:hover {
+  background-color: color-mix(in srgb, var(--text-danger) 20%, transparent);
+  color: var(--text-danger);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--text-secondary);
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+.btn-ghost:hover {
+  background-color: var(--bg-muted);
+  color: var(--text-primary);
+}
+
+/* ── Card System (premium, theme-aware) ────────────────────────────── */
+.surface-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-base);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.surface-card-hover:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-md);
+}
+
+/* Icon tile — always visible against any surface in both themes */
+.icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: var(--bg-muted);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Divider */
+.theme-divider {
+  border-color: var(--border-separator);
+}
+
+/* ── Text colour helpers (guaranteed readable in both themes) ──────── */
+.theme-text-primary   { color: var(--text-primary); }
+.theme-text-secondary { color: var(--text-secondary); }
+.theme-text-tertiary  { color: var(--text-tertiary); }
+.theme-text-accent    { color: var(--text-accent); }
+.theme-text-success   { color: var(--text-success); }
+.theme-text-warning   { color: var(--text-warning); }
+.theme-text-danger    { color: var(--text-danger); }
+
+/* Surface helpers */
+.theme-surface-card     { background-color: var(--bg-card); }
+.theme-surface-elevated { background-color: var(--bg-elevated); }
+.theme-surface-muted    { background-color: var(--bg-muted); }
+.theme-border           { border-color: var(--border-base); }
+
+/* Score pill backgrounds tuned per theme so the score stays readable */
+.score-pill-high { background-color: var(--bg-success); }
+.score-pill-mid  { background-color: var(--bg-warning); }
+.score-pill-low  { background-color: var(--bg-danger); }
+
+/* Premium accent underline for section headers */
+.section-rule {
+  height: 3px;
+  width: 3rem;
+  border-radius: 9999px;
+  background: var(--accent-gradient);
+}
+
+/* ── Semantic tone chips — theme-aware in BOTH light & dark ─────── */
+.tone-success { background-color: var(--bg-success); color: var(--text-success); border-color: color-mix(in srgb, var(--text-success) 35%, transparent); }
+.tone-warning { background-color: var(--bg-warning); color: var(--text-warning); border-color: color-mix(in srgb, var(--text-warning) 35%, transparent); }
+.tone-danger  { background-color: var(--bg-danger);  color: var(--text-danger);  border-color: color-mix(in srgb, var(--text-danger) 35%, transparent); }
+.tone-info    { background-color: var(--bg-tag);     color: var(--text-accent); border-color: var(--border-accent); }
+.tone-slate   { background-color: var(--bg-muted);   color: var(--text-secondary); border-color: var(--border-base); }
+
+/* Tone ring-borders for accent icon chips on cards */
+.tone-text-success { color: var(--text-success); }
+.tone-text-warning { color: var(--text-warning); }
+.tone-text-danger  { color: var(--text-danger); }
+.tone-text-info    { color: var(--text-accent); }
+

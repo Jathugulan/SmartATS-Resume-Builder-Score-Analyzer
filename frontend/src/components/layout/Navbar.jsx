@@ -7,6 +7,7 @@ const routeInfo = {
   '/upload': { title: 'ATS Resume Audit', subtitle: 'Deep 7-dimensional scoring & parsing verification' },
   '/history': { title: 'Audit History', subtitle: 'Previous resume scan reports and diagnostic analytics' },
   '/builder': { title: 'Resume Studio', subtitle: 'Craft & tailor ATS-optimized resumes with live LaTeX engine' },
+  '/builder/templates': { title: 'LaTeX Template Gallery', subtitle: 'Overleaf-grade, ATS-parseable modular resume templates' },
   '/templates': { title: 'LaTeX Template Gallery', subtitle: 'Overleaf-grade, ATS-parseable modular resume templates' },
   '/interview-prep': { title: 'AI Interview Studio', subtitle: 'Resume-grounded question generator & response scoring' },
 };

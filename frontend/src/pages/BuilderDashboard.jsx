@@ -114,10 +114,10 @@ export default function BuilderDashboard() {
               <span>Create New Resume</span>
             </button>
             <Link
-              to="/templates"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 text-sm font-medium border border-slate-700 transition-all"
+              to="/builder/templates"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl btn-secondary text-sm font-medium"
             >
-              <Layers className="w-4 h-4 text-cyan-400" />
+              <Layers className="w-4 h-4 theme-text-accent" />
               <span>Template Gallery</span>
             </Link>
           </div>

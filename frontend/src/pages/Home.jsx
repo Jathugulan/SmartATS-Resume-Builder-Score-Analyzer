@@ -12,13 +12,11 @@ import {
 } from '../components/landing/MarketingBits';
 import { usePageMeta } from '../hooks/usePageMeta';
 
-/* ═══════════════════════════════════════════════════════════════════
+/* ============================================================
    HOME — Public marketing page
-   ═══════════════════════════════════════════════════════════════════ */
+   ============================================================ */
 
-/* ── Trust / statistics ─────────────────────────────────────────────
-   NOTE: numeric `value` entries animate with a counter on scroll.
-   These are placeholder metrics — replace with real product data. */
+/* ------ Trust / statistics -------------------------------------- */
 const STATS = [
   { value: 95, suffix: '%+', label: 'ATS Compatibility', icon: ShieldCheck, delay: 0 },
   { value: 10, suffix: '+', label: 'Professional Templates', icon: LayoutTemplate, delay: 0.1 },
@@ -26,7 +24,7 @@ const STATS = [
   { value: null, text: 'Minutes', suffix: '', label: 'To Build Your Resume', icon: Clock, delay: 0.3 },
 ];
 
-/* ── Core features grid ──────────────────────────────────────────── */
+/* ------ Core features grid -------------------------------------- */
 const FEATURES = [
   {
     icon: FileText,
@@ -65,8 +63,7 @@ const FEATURES = [
     tone: 'text-rose-500 bg-rose-500/10 border-rose-500/20',
   },
 ];
-
-/* ── ATS intelligence workflow ───────────────────────────────────── */
+/* ------ ATS intelligence workflow -------------------------------- */
 const ATS_FLOW = ['Resume', 'ATS Scan', 'Score', 'Keyword Analysis', 'Recommendations', 'Improved Resume'];
 
 const ATS_BREAKDOWN = [
@@ -77,7 +74,7 @@ const ATS_BREAKDOWN = [
   { label: 'Sections', value: 95 },
 ];
 
-/* ── Builder preview sections ────────────────────────────────────── */
+/* ------ Builder preview sections -------------------------------- */
 const BUILDER_SECTIONS = [
   { icon: User, name: 'Personal Information', hint: 'Name, contact, links' },
   { icon: FileText, name: 'Summary', hint: 'Your professional pitch' },
@@ -98,15 +95,25 @@ const PREVIEW_CONTENT = {
   'Certifications': ['AWS Certified Developer – Associate', 'Meta Front-End Developer Certificate'],
 };
 
-/* ── Job matcher data ────────────────────────────────────────────── */
+/* ------ Job matcher data ---------------------------------------- */
 const CANDIDATE_SKILLS = ['React', 'JavaScript', 'Node.js', 'REST APIs', 'MongoDB'];
 const REQUIRED_SKILLS = ['React', 'TypeScript', 'REST APIs', 'Git', 'Node.js'];
 const MATCHED = ['React', 'Node.js', 'REST APIs'];
 const MISSING = ['TypeScript', 'Git'];
 
-/* ═══════════════════════════════════════════════════════════════════
+/* ------ How-it-works steps -------------------------------------- */
+const STEPS = ['Choose Template', 'Add Information', 'Analyze Resume', 'Optimize', 'Download & Apply'];
+
+/* ------ Templates preview --------------------------------------- */
+const TEMPLATE_PREVIEWS = [
+  { name: 'Professional Classic', tone: 'blue', variant: 'classic', category: 'Professional' },
+  { name: 'Modern Minimal', tone: 'indigo', variant: 'minimal', category: 'Modern' },
+  { name: 'Executive', tone: 'slate', variant: 'executive', category: 'Executive' },
+  { name: 'Developer', tone: 'emerald', variant: 'developer', category: 'Developer' },
+];
+/* ============================================================
    PAGE COMPONENT
-   ═══════════════════════════════════════════════════════════════════ */
+   ============================================================ */
 export default function Home() {
   usePageMeta({
     title: 'ATS Smart Resume Builder & Score Analyzer',
@@ -116,9 +123,9 @@ export default function Home() {
 
   const { goBuilder, goAnalyze, goRegister } = useAppNav();
 
-  /* ── SECTION 01: HERO ─────────────────────────────────────────── */
   return (
     <div className="w-full overflow-hidden">
+      {/* ------ SECTION 01: HERO ----------------------------------- */}
       <section className="relative">
         <div className="absolute inset-0 hero-gradient pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 lg:pt-24 pb-16 sm:pb-24">
@@ -196,15 +203,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-/* ── Templates preview ───────────────────────────────────────────── */
-const TEMPLATE_PREVIEWS = [
-  { name: 'Professional Classic', tone: 'blue', variant: 'classic', category: 'Professional' },
-  { name: 'Modern Minimal', tone: 'indigo', variant: 'minimal', category: 'Modern' },
-  { name: 'Executive', tone: 'slate', variant: 'executive', category: 'Executive' },
-  { name: 'Developer', tone: 'emerald', variant: 'developer', category: 'Developer' },
-];
-
-{/* ── SECTION 02: TRUST / STATISTICS ───────────────────────── */}
+{/* ------ SECTION 02: TRUST / STATISTICS -------------------- */}
       <section className="py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -235,7 +234,7 @@ const TEMPLATE_PREVIEWS = [
         </div>
       </section>
 
-      {/* ── SECTION 03: CORE FEATURES ────────────────────────────── */}
+      {/* ------ SECTION 03: CORE FEATURES ------------------------- */}
       <section className="py-14 sm:py-24" style={{ backgroundColor: 'var(--bg-elevated)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -290,9 +289,7 @@ const TEMPLATE_PREVIEWS = [
           </FadeIn>
         </div>
       </section>
-/* ── How-it-works preview ────────────────────────────────────────── */
-const STEPS = ['Choose Template', 'Add Information', 'Analyze Resume', 'Optimize', 'Download & Apply'];
-{/* ── SECTION 04: ATS INTELLIGENCE ───────────────────────────── */}
+{/* ------ SECTION 04: ATS INTELLIGENCE --------------------- */}
       <section className="py-14 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border p-6 sm:p-10 lg:p-12 relative overflow-hidden"
@@ -366,7 +363,33 @@ const STEPS = ['Choose Template', 'Add Information', 'Analyze Resume', 'Optimize
                     style={{ borderColor: 'var(--border-subtle)' }}>
                     <div className="text-xs font-semibold" style={{ color: 'var(--text-tertiary)' }}>
                       Your resume is well-positioned for most ATS systems.
-{/* ── SECTION 06: JOB DESCRIPTION MATCHER ───────────────────── */}
+                    </div>
+                    <CtaButton size="sm" onClick={goAnalyze}>
+                      Check My ATS Score
+                    </CtaButton>
+                  </div>
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ------ SECTION 05: RESUME BUILDER PREVIEW -------------- */}
+      <section id="builder-preview" className="py-14 sm:py-24" style={{ backgroundColor: 'var(--bg-elevated)' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <FadeIn>
+            <SectionHeader
+              label="Smart Resume Builder"
+              heading="Build Your Resume"
+              sub="Choose a section in the editor and watch the live resume preview update instantly — no refresh required."
+            />
+          </FadeIn>
+
+          <BuilderShowcase goBuilder={goBuilder} />
+        </div>
+      </section>
+{/* ------ SECTION 06: JOB DESCRIPTION MATCHER -------------- */}
       <section className="py-14 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -461,7 +484,11 @@ const STEPS = ['Choose Template', 'Add Information', 'Analyze Resume', 'Optimize
                   Match My Resume
                 </CtaButton>
               </div>
-{/* ── SECTION 07: AI OPTIMIZATION BEFORE / AFTER ─────────────── */}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+{/* ------ SECTION 07: AI OPTIMIZATION BEFORE / AFTER ------- */}
       <section className="py-14 sm:py-24" style={{ backgroundColor: 'var(--bg-elevated)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -527,7 +554,12 @@ const STEPS = ['Choose Template', 'Add Information', 'Analyze Resume', 'Optimize
                 <CtaButton onClick={goBuilder} icon={Wand2}>
                   Optimize My Resume
                 </CtaButton>
-{/* ── SECTION 08: TEMPLATES PREVIEW ──────────────────────────── */}
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+{/* ------ SECTION 08: TEMPLATES PREVIEW -------------------- */}
       <section className="py-14 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -573,7 +605,10 @@ const STEPS = ['Choose Template', 'Add Information', 'Analyze Resume', 'Optimize
               View All Templates
             </CtaButton>
           </FadeIn>
-{/* ── SECTION 09: HOW IT WORKS PREVIEW ───────────────────────── */}
+        </div>
+      </section>
+
+      {/* ------ SECTION 09: HOW IT WORKS PREVIEW -------------- */}
       <section className="py-14 sm:py-24" style={{ backgroundColor: 'var(--bg-elevated)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -619,8 +654,7 @@ const STEPS = ['Choose Template', 'Add Information', 'Analyze Resume', 'Optimize
           </FadeIn>
         </div>
       </section>
-
-      {/* ── SECTION 10: FINAL CTA ───────────────────────────────── */}
+{/* ------ SECTION 10: FINAL CTA -------------------------- */}
       <section className="py-16 sm:py-28">
         <div className="max-w-5xl mx-auto px-4">
           <FadeIn>
@@ -648,11 +682,15 @@ const STEPS = ['Choose Template', 'Add Information', 'Analyze Resume', 'Optimize
           </FadeIn>
         </div>
       </section>
-/* ═══════════════════════════════════════════════════════════════════
-   SUPPORTING COMPONENTS
-   ═══════════════════════════════════════════════════════════════════ */
+    </div>
+  );
+}
 
-/* ── Statistic value with animated counter when numeric ──────────── */
+/* ============================================================
+   SUPPORTING COMPONENTS
+   ============================================================ */
+
+/* ------ Statistic value with animated counter when numeric ------ */
 function StatValue({ stat }) {
   const { ref, count } = useCounter(stat.value ?? 0);
 
@@ -678,8 +716,7 @@ function StatValue({ stat }) {
     </div>
   );
 }
-
-/* ── Hero dashboard composition ──────────────────────────────────── */
+/* ------ Hero dashboard composition -------------------------------- */
 function HeroDashboard() {
   return (
     <div className="relative w-full animate-float">
@@ -753,7 +790,15 @@ function HeroDashboard() {
         <div className="w-7 h-7 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center">
           <Brain className="w-3.5 h-3.5" />
         </div>
-/* ── Interactive split builder preview ───────────────────────────── */
+        <div className="text-[11px] leading-tight">
+          <div className="font-bold" style={{ color: 'var(--text-primary)' }}>Skills Analysis</div>
+          <div className="text-[10px] font-semibold" style={{ color: 'var(--text-tertiary)' }}>8 matched · 2 missing</div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+/* ------ Interactive split builder preview -------------------------- */
 function BuilderShowcase({ goBuilder }) {
   const [active, setActive] = useState('Personal Information');
   const current = PREVIEW_CONTENT[active] || [];
@@ -859,51 +904,3 @@ function BuilderShowcase({ goBuilder }) {
     </FadeIn>
   );
 }
-        <div className="text-[11px] leading-tight">
-          <div className="font-bold" style={{ color: 'var(--text-primary)' }}>Skills Analysis</div>
-          <div className="text-[10px] font-semibold" style={{ color: 'var(--text-tertiary)' }}>8 matched · 2 missing</div>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-    </div>
-  );
-}
-        </div>
-      </section>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-                    </div>
-                    <CtaButton size="sm" onClick={goAnalyze}>
-                      Check My ATS Score
-                    </CtaButton>
-                  </div>
-                </div>
-              </FadeIn>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SECTION 05: RESUME BUILDER PREVIEW (interactive) ───── */}
-      <section id="builder-preview" className="py-14 sm:py-24" style={{ backgroundColor: 'var(--bg-elevated)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <FadeIn>
-            <SectionHeader
-              label="Smart Resume Builder"
-              heading="Build Your Resume"
-              sub="Choose a section in the editor and watch the live resume preview update instantly — no refresh required."
-            />
-          </FadeIn>
-
-          <BuilderShowcase goBuilder={goBuilder} />
-        </div>
-      </section>

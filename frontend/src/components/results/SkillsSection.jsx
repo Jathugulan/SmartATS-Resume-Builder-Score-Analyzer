@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 
 function SkillTag({ skill, variant = 'default' }) {
   const styles = {
-    default: 'bg-slate-100 text-slate-700 border-slate-200',
-    matched: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-    missing: 'bg-red-50 text-red-700 border-red-200',
-    partial: 'bg-amber-50 text-amber-700 border-amber-200',
+    default: 'tone-slate',
+    matched: 'tone-success',
+    missing: 'tone-danger',
+    partial: 'tone-warning',
   };
 
   return (
@@ -31,8 +31,8 @@ export default function SkillsSection({ skills, matching, jdProvided }) {
       className="space-y-6"
     >
       {allDetected.length > 0 && (
-        <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-          <h3 className="text-lg font-bold text-slate-800 mb-3">Detected Skills ({allDetected.length})</h3>
+        <div className="surface-card rounded-xl border p-6 shadow-sm">
+          <h3 className="text-lg font-bold mb-3" style={{ color: 'var(--text-primary)' }}>Detected Skills ({allDetected.length})</h3>
           <div className="flex flex-wrap gap-2">
             {allDetected.map((s, i) => (
               <SkillTag key={i} skill={s} />
@@ -40,8 +40,8 @@ export default function SkillsSection({ skills, matching, jdProvided }) {
           </div>
 
           {skills?.technical?.length > 0 && (
-            <div className="mt-4 pt-4 border-t border-slate-100">
-              <h4 className="text-sm font-semibold text-slate-600 mb-2">Technical Skills</h4>
+            <div className="mt-4 pt-4 border-t theme-divider">
+              <h4 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-secondary)' }}>Technical Skills</h4>
               <div className="flex flex-wrap gap-2">
                 {skills.technical.map((s, i) => (
                   <SkillTag key={i} skill={s} />
@@ -52,7 +52,7 @@ export default function SkillsSection({ skills, matching, jdProvided }) {
 
           {skills?.tools?.length > 0 && (
             <div className="mt-3">
-              <h4 className="text-sm font-semibold text-slate-600 mb-2">Tools & Technologies</h4>
+              <h4 className="text-sm font-semibold mb-2" style={{ color: 'var(--text-secondary)' }}>Tools & Technologies</h4>
               <div className="flex flex-wrap gap-2">
                 {skills.tools.map((s, i) => (
                   <SkillTag key={i} skill={s} />
@@ -66,8 +66,8 @@ export default function SkillsSection({ skills, matching, jdProvided }) {
       {jdProvided && matching && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {matching.matchedSkills?.length > 0 && (
-            <div className="bg-white rounded-xl border border-emerald-200 p-5 shadow-sm">
-              <h4 className="text-sm font-bold text-emerald-700 mb-3">
+            <div className="surface-card rounded-xl border p-5 shadow-sm" style={{ borderColor: 'var(--border-base)' }}>
+              <h4 className="text-sm font-bold mb-3 tone-text-success">
                 Matched Skills ({matching.matchedSkills.length})
               </h4>
               <div className="flex flex-wrap gap-2">
@@ -79,8 +79,8 @@ export default function SkillsSection({ skills, matching, jdProvided }) {
           )}
 
           {matching.missingSkills?.length > 0 && (
-            <div className="bg-white rounded-xl border border-red-200 p-5 shadow-sm">
-              <h4 className="text-sm font-bold text-red-700 mb-3">
+            <div className="surface-card rounded-xl border p-5 shadow-sm" style={{ borderColor: 'var(--border-base)' }}>
+              <h4 className="text-sm font-bold mb-3 tone-text-danger">
                 Missing Skills ({matching.missingSkills.length})
               </h4>
               <div className="flex flex-wrap gap-2">
@@ -92,16 +92,16 @@ export default function SkillsSection({ skills, matching, jdProvided }) {
           )}
 
           {matching.partialSkills?.length > 0 && (
-            <div className="bg-white rounded-xl border border-amber-200 p-5 shadow-sm md:col-span-2">
-              <h4 className="text-sm font-bold text-amber-700 mb-3">
+            <div className="surface-card rounded-xl border p-5 shadow-sm md:col-span-2" style={{ borderColor: 'var(--border-base)' }}>
+              <h4 className="text-sm font-bold mb-3 tone-text-warning">
                 Partial Skills ({matching.partialSkills.length})
               </h4>
               <div className="space-y-2">
                 {matching.partialSkills.map((ps, i) => (
-                  <div key={i} className="bg-amber-50 rounded-lg px-3 py-2">
-                    <span className="text-sm font-medium text-amber-800">{ps.skill}</span>
+                  <div key={i} className="rounded-lg px-3 py-2 tone-warning">
+                    <span className="text-sm font-medium">{ps.skill}</span>
                     {ps.context && (
-                      <p className="text-xs text-amber-600 mt-0.5">{ps.context}</p>
+                      <p className="text-xs mt-0.5 opacity-90">{ps.context}</p>
                     )}
                   </div>
                 ))}
@@ -112,7 +112,7 @@ export default function SkillsSection({ skills, matching, jdProvided }) {
       )}
 
       {!jdProvided && (
-        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-700">
+        <div className="rounded-xl border p-4 text-sm tone-info">
           No Job Description was provided. Skill matching is based on general ATS benchmarks.
         </div>
       )}

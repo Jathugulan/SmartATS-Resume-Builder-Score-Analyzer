@@ -61,8 +61,12 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       localStorage.removeItem('ats_token');
       localStorage.removeItem('ats_user');
-      if (window.location.pathname !== '/login' && window.location.pathname !== '/register') {
-        window.location.href = '/login?expired=1';
+      if (
+        window.location.pathname !== '/auth' &&
+        window.location.pathname !== '/login' &&
+        window.location.pathname !== '/register'
+      ) {
+        window.location.href = '/auth?mode=signin&expired=1';
       }
     }
     

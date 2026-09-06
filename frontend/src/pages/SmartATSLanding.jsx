@@ -16,27 +16,19 @@ import { useTheme } from '../context/ThemeContext';
 
 import LandingNavbar from '../components/landing/LandingNavbar';
 import ResumeIllustration from '../components/landing/ResumeIllustration';
-import LandingAuthCard from '../components/landing/LandingAuthCard';
 import FeatureCards from '../components/landing/FeatureCards';
 import StatsSection from '../components/landing/StatsSection';
 import TrustSection from '../components/landing/TrustSection';
 import DemoModal from '../components/landing/DemoModal';
-import ForgotPasswordModal from '../components/landing/ForgotPasswordModal';
 
-export default function SmartATSLanding({ initialTab = 'signin' }) {
+export default function SmartATSLanding() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
-  const [authTab, setAuthTab] = useState(initialTab);
   const [demoOpen, setDemoOpen] = useState(false);
-  const [forgotOpen, setForgotOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
-    setAuthTab('signup');
-    const el = document.getElementById('auth-section');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigate('/auth?mode=signup');
   };
 
   const handleQuickShortcut = (path) => {
@@ -83,7 +75,6 @@ export default function SmartATSLanding({ initialTab = 'signin' }) {
 
       {/* Header / Top Navigation */}
       <LandingNavbar
-        onAuthTabChange={(tab) => setAuthTab(tab)}
         onOpenDemo={() => setDemoOpen(true)}
       />
 
@@ -202,13 +193,63 @@ export default function SmartATSLanding({ initialTab = 'signin' }) {
               <ResumeIllustration />
             </div>
 
-            {/* ── RIGHT COLUMN: Desktop Authentication Card ──────────── */}
+            {/* ── RIGHT COLUMN: Premium Get Started Panel ─────────── */}
             <div className="lg:col-span-4 xl:col-span-3 flex justify-center lg:justify-end">
-              <LandingAuthCard
-                activeTab={authTab}
-                onTabChange={(tab) => setAuthTab(tab)}
-                onForgotPassword={() => setForgotOpen(true)}
-              />
+              <div
+                className={`w-full max-w-[420px] rounded-3xl p-6 sm:p-7 backdrop-blur-2xl border relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.55)] ${
+                  isDark ? 'border-white/10' : 'border-slate-200'
+                }`}
+                style={{
+                  background: isDark
+                    ? 'linear-gradient(160deg, rgba(29,37,64,0.9), rgba(15,17,32,0.95))'
+                    : 'linear-gradient(160deg, #ffffff, #eef2ff)',
+                }}
+              >
+                {/* Ambient glows */}
+                <div className="absolute -top-16 -right-16 w-48 h-48 bg-blue-500/20 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute -bottom-20 -left-16 w-48 h-48 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-bold mb-5 bg-white/[0.06] border-white/0 text-blue-600 dark:text-cyan-300">
+                    <Sparkles className="w-3.5 h-3.5" /> Unlock Your Career Potential
+                  </div>
+
+                  <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-tight">
+                    Build a resume that{' '}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-cyan-400 dark:to-purple-400">
+                      gets interviews
+                    </span>
+                  </h3>
+
+                  <ul className="mt-6 space-y-3 text-sm">
+                    {[
+                      'ATS-optimized resume builder',
+                      'Instant AI compatibility scoring',
+                      '10+ professional templates',
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2.5">
+                        <CheckCircle2 className="w-4 h-4 mt-0.5 text-emerald-500 shrink-0" />
+                        <span className={isDark ? 'text-slate-300' : 'text-slate-600'}>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button
+                    onClick={handleGetStarted}
+                    className="w-full mt-7 py-3.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-xl shadow-indigo-600/30 hover:shadow-indigo-500/50 transition-all active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 border border-white/20"
+                  >
+                    <span>Get Started Free</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+
+                  <button
+                    onClick={() => navigate('/auth?mode=signin')}
+                    className="w-full mt-3 py-2.5 rounded-xl text-sm font-semibold border transition-all active:scale-[0.98] cursor-pointer bg-white/[0.04] hover:bg-white/[0.1] border-white/0 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                  >
+                    Already have an account? <span className="font-bold text-blue-600 dark:text-cyan-400">Log In</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -330,10 +371,6 @@ export default function SmartATSLanding({ initialTab = 'signin' }) {
         isOpen={demoOpen}
         onClose={() => setDemoOpen(false)}
         onGetStarted={handleGetStarted}
-      />
-      <ForgotPasswordModal
-        isOpen={forgotOpen}
-        onClose={() => setForgotOpen(false)}
       />
     </div>
   );

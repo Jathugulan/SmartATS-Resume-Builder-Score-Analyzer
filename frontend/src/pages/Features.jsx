@@ -14,9 +14,9 @@ import {
 } from '../components/landing/MarketingBits';
 import { usePageMeta } from '../hooks/usePageMeta';
 
-/* ═══════════════════════════════════════════════════════════════════
+/* ============================================================
    FEATURES — Public marketing page
-   ═══════════════════════════════════════════════════════════════════ */
+   ============================================================ */
 
 const BUILDER_SECTIONS = [
   { icon: User, name: 'Personal Information' },
@@ -85,9 +85,30 @@ const TEMPLATE_CHECKLIST = [
   'Multiple professional styles',
 ];
 
-/* ═══════════════════════════════════════════════════════════════════
+const BEFORE_BULLETS = [
+  'Worked on web applications.',
+  'Helped with the frontend.',
+  'Responsible for some features.',
+];
+
+const AFTER_BULLETS = [
+  'Developed responsive web applications using React.js and RESTful APIs, improving performance and UX.',
+  'Implemented reusable component library adopted by 3 product teams, cutting build time by 20%.',
+  'Spearheaded accessibility improvements that raised Lighthouse scores from 68 to 96.',
+];
+
+const MGMT_FEATURES = [
+  { icon: Save, label: 'Save Resume' },
+  { icon: Copy, label: 'Duplicate Resume' },
+  { icon: Edit3, label: 'Rename Resume' },
+  { icon: RefreshCw, label: 'Edit Resume' },
+  { icon: Layers, label: 'Multiple Versions' },
+  { icon: Download, label: 'Download PDF' },
+  { icon: Printer, label: 'Print Resume' },
+];
+/* ============================================================
    PAGE COMPONENT
-   ═══════════════════════════════════════════════════════════════════ */
+   ============================================================ */
 export default function Features() {
   usePageMeta({
     title: 'Resume Builder & ATS Analyzer Features',
@@ -99,7 +120,7 @@ export default function Features() {
 
   return (
     <div className="w-full overflow-hidden">
-      {/* ── SECTION 01: HERO ─────────────────────────────────────── */}
+      {/* ------ SECTION 01: HERO --------------------------------- */}
       <section className="relative">
         <div className="absolute inset-0 hero-gradient pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center space-y-6">
@@ -148,7 +169,7 @@ export default function Features() {
         </div>
       </section>
 
-      {/* ── SECTION 02: SMART RESUME BUILDER ────────────────────── */}
+      {/* ------ SECTION 02: SMART RESUME BUILDER ----------------- */}
       <section className="py-14 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -158,7 +179,11 @@ export default function Features() {
               sub="Every section of a professional resume, arranged and reorderable — with a live preview that updates as you type."
             />
           </FadeIn>
-{/* ── SECTION 03: ATS SCORE ANALYZER ──────────────────────── */}
+
+          <BuilderEditorShowcase goBuilder={goBuilder} />
+        </div>
+      </section>
+{/* ------ SECTION 03: ATS SCORE ANALYZER ------------------- */}
       <section className="py-14 sm:py-24" style={{ backgroundColor: 'var(--bg-elevated)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -218,7 +243,10 @@ export default function Features() {
               </div>
             </div>
           </FadeIn>
-{/* ── SECTION 04: AI RESUME OPTIMIZATION ───────────────────── */}
+        </div>
+      </section>
+
+      {/* ------ SECTION 04: AI RESUME OPTIMIZATION ------------- */}
       <section className="py-14 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -249,7 +277,9 @@ export default function Features() {
           </FadeIn>
 
           <AiBeforeAfter goBuilder={goBuilder} />
-{/* ── SECTION 05: JOB DESCRIPTION MATCHER ──────────────────── */}
+        </div>
+      </section>
+{/* ------ SECTION 05: JOB DESCRIPTION MATCHER ------------- */}
       <section className="py-14 sm:py-24" style={{ backgroundColor: 'var(--bg-elevated)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -349,7 +379,11 @@ export default function Features() {
                   </div>
                 </div>
               </div>
-{/* ── SECTION 06: KEYWORD INTELLIGENCE ─────────────────────── */}
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+{/* ------ SECTION 06: KEYWORD INTELLIGENCE ---------------- */}
       <section className="py-14 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -424,7 +458,7 @@ export default function Features() {
         </div>
       </section>
 
-      {/* ── SECTION 07: ATS-FRIENDLY TEMPLATES ─────────────────── */}
+      {/* ------ SECTION 07: ATS-FRIENDLY TEMPLATES ------------- */}
       <section className="py-14 sm:py-24" style={{ backgroundColor: 'var(--bg-elevated)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -451,7 +485,12 @@ export default function Features() {
 
           <FadeIn className="text-center pt-2 flex justify-center">
             <CtaButton to="/templates" size="lg" variant="outline" icon={ShieldCheck}>
-{/* ── SECTION 08: REAL-TIME RESUME PREVIEW ──────────────────── */}
+              Explore Templates
+            </CtaButton>
+          </FadeIn>
+        </div>
+      </section>
+{/* ------ SECTION 08: REAL-TIME RESUME PREVIEW ------------- */}
       <section className="py-14 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -466,7 +505,7 @@ export default function Features() {
         </div>
       </section>
 
-      {/* ── SECTION 09: RESUME MANAGEMENT ───────────────────────── */}
+      {/* ------ SECTION 09: RESUME MANAGEMENT ----------------- */}
       <section className="py-14 sm:py-24" style={{ backgroundColor: 'var(--bg-elevated)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <FadeIn>
@@ -496,7 +535,7 @@ export default function Features() {
         </div>
       </section>
 
-      {/* ── SECTION 10: FEATURE CTA ─────────────────────────────── */}
+      {/* ------ SECTION 10: FEATURE CTA ------------------------ */}
       <section className="py-16 sm:py-28">
         <div className="max-w-5xl mx-auto px-4">
           <FadeIn>
@@ -520,11 +559,16 @@ export default function Features() {
             </div>
           </FadeIn>
         </div>
-/* ═══════════════════════════════════════════════════════════════════
-   SUPPORTING COMPONENTS
-   ═══════════════════════════════════════════════════════════════════ */
+      </section>
+    </div>
+  );
+}
 
-/* ── Interactive structured editor mockup ────────────────────────── */
+/* ============================================================
+   SUPPORTING COMPONENTS
+   ============================================================ */
+
+/* ------ Interactive structured editor mockup ---------------------- */
 function BuilderEditorShowcase({ goBuilder }) {
   const [active, setActive] = useState('Professional Summary');
 
@@ -543,7 +587,7 @@ function BuilderEditorShowcase({ goBuilder }) {
   return (
     <FadeIn delay={0.1}>
       <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-6 items-stretch">
-        {/* Section list */}
+{/* Section list */}
         <div className="rounded-2xl border p-5 sm:p-6"
           style={{ backgroundColor: 'var(--bg-card)', borderColor: 'var(--border-base)' }}>
           <div className="flex items-center justify-between mb-5">
@@ -620,19 +664,13 @@ function BuilderEditorShowcase({ goBuilder }) {
             <CtaButton className="w-full" onClick={goBuilder} icon={ArrowRight}>
               Start Building
             </CtaButton>
-/* ── AI Before / After toggle ────────────────────────────────────── */
-const BEFORE_BULLETS = [
-  'Worked on web applications.',
-  'Helped with the frontend.',
-  'Responsible for some features.',
-];
-
-const AFTER_BULLETS = [
-  'Developed responsive web applications using React.js and RESTful APIs, improving performance and UX.',
-  'Implemented reusable component library adopted by 3 product teams, cutting build time by 20%.',
-  'Spearheaded accessibility improvements that raised Lighthouse scores from 68 to 96.',
-];
-
+          </div>
+        </div>
+      </div>
+    </FadeIn>
+  );
+}
+/* ------ AI Before / After toggle ---------------------------------- */
 function AiBeforeAfter({ goBuilder }) {
   const [view, setView] = useState('after');
 
@@ -702,7 +740,14 @@ function AiBeforeAfter({ goBuilder }) {
           <div className="mt-7 pt-5 border-t text-center" style={{ borderColor: 'var(--border-subtle)' }}>
             <CtaButton onClick={goBuilder} icon={Wand2}>
               Optimize My Resume
-/* ── Real-time preview (typed input updates the mock resume) ─────── */
+            </CtaButton>
+          </div>
+        </div>
+      </div>
+    </FadeIn>
+  );
+}
+/* ------ Real-time preview (typed input updates the mock resume) --- */
 function RealTimePreview() {
   const [summary, setSummary] = useState('Results-driven frontend engineer with 5+ years shipping accessible web apps.');
 
@@ -777,45 +822,3 @@ function RealTimePreview() {
     </FadeIn>
   );
 }
-            </CtaButton>
-          </div>
-        </div>
-      </div>
-    </FadeIn>
-  );
-}
-          </div>
-        </div>
-      </div>
-    </FadeIn>
-  );
-}
-      </section>
-    </div>
-  );
-}
-              Explore Templates
-            </CtaButton>
-          </FadeIn>
-        </div>
-      </section>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-        </div>
-      </section>
-        </div>
-      </section>
-          <BuilderEditorShowcase goBuilder={goBuilder} />
-        </div>
-      </section>
-const MGMT_FEATURES = [
-  { icon: Save, label: 'Save Resume' },
-  { icon: Copy, label: 'Duplicate Resume' },
-  { icon: Edit3, label: 'Rename Resume' },
-  { icon: RefreshCw, label: 'Edit Resume' },
-  { icon: Layers, label: 'Multiple Versions' },
-  { icon: Download, label: 'Download PDF' },
-  { icon: Printer, label: 'Print Resume' },
-];

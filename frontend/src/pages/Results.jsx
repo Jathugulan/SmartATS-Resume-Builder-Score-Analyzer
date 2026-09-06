@@ -118,7 +118,7 @@ export default function Results() {
       <div className="flex items-center justify-between">
         <button
           onClick={() => navigate('/history')}
-          className="flex items-center gap-2 text-sm text-slate-400 hover:text-slate-200 transition-colors"
+          className="flex items-center gap-2 text-sm theme-text-tertiary hover:theme-text-secondary transition-colors cursor-pointer"
         >
           <ArrowLeft size={16} />
           Back to History
@@ -146,16 +146,23 @@ export default function Results() {
       <AtsScoreHero score={analysis.atsScore} rating={analysis.rating} />
 
       {/* 1-Click Fix & Optimize in Resume Studio Banner */}
-      <div className="relative overflow-hidden rounded-2xl p-5 bg-gradient-to-r from-indigo-950 via-purple-950/50 to-slate-900 border border-indigo-500/40 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div
+        className="relative overflow-hidden rounded-2xl p-5 border shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4"
+        style={{
+          background:
+            'radial-gradient(120% 120% at 95% 0%, var(--accent-glow) 0%, transparent 55%), linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%)',
+          borderColor: 'var(--border-accent)',
+        }}
+      >
         <div className="space-y-1 text-center sm:text-left">
-          <div className="inline-flex items-center gap-1.5 text-indigo-300 text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider theme-text-accent">
+            <Sparkles className="w-3.5 h-3.5" />
             1-Click ATS Auto-Fix
           </div>
-          <h3 className="text-base font-bold text-white">
+          <h3 className="text-base font-bold" style={{ color: 'var(--text-primary)' }}>
             Optimize this resume in the Interactive Resume Studio
           </h3>
-          <p className="text-xs text-slate-300 max-w-xl leading-relaxed">
+          <p className="text-xs max-w-xl leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
             Automatically transfer parsed skills, work experience, and personal entities into an ATS-tested LaTeX template with live score simulation and AI bullet enhancements.
           </p>
         </div>

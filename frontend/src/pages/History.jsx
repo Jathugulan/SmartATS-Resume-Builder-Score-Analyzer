@@ -73,8 +73,8 @@ export default function History() {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
-          <LoadingSpinner size={32} className="mx-auto mb-4 text-blue-600" />
-          <p className="text-slate-500">Loading history...</p>
+          <LoadingSpinner size={32} className="mx-auto mb-4 theme-text-accent" />
+          <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>Loading history...</p>
         </div>
       </div>
     );
@@ -111,10 +111,13 @@ export default function History() {
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="text-2xl font-extrabold text-white">Scan & Audit History</h1>
-          <p className="text-xs text-slate-400 mt-0.5">{analyses.length} total resume analys{analyses.length === 1 ? 'is' : 'es'}</p>
+          <h1 className="text-2xl font-extrabold" style={{ color: 'var(--text-primary)' }}>Scan &amp; Audit History</h1>
+          <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>
+            {analyses.length} total resume analys{analyses.length === 1 ? 'is' : 'es'} ·{' '}
+            <span className="theme-text-tertiary">Saved diagnostic reports &amp; scores</span>
+          </p>
         </div>
         <Button onClick={() => navigate('/upload')} size="sm">
           <Plus size={16} className="mr-1" />
@@ -129,17 +132,17 @@ export default function History() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
-            className="rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/40 p-4 sm:p-5 shadow-xl transition-all"
+            className="surface-card surface-card-hover p-4 sm:p-5 rounded-2xl"
           >
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 flex items-center justify-center shrink-0">
+              <div className="w-10 h-10 rounded-xl icon-tile text-indigo-500 dark:text-indigo-400 flex items-center justify-center shrink-0">
                 <FileText size={20} />
               </div>
 
               <div className="flex-1 min-w-0">
-                <p className="font-bold text-white text-sm truncate">{item.fileName}</p>
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-0.5 text-xs text-slate-400">
-                  <span className="text-slate-300 font-medium">{item.candidateName && item.candidateName !== 'Unknown' ? item.candidateName : 'Candidate'}</span>
+                <p className="font-bold text-sm truncate" style={{ color: 'var(--text-primary)' }}>{item.fileName}</p>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-0.5 text-xs" style={{ color: 'var(--text-secondary)' }}>
+                  <span className="theme-text-secondary font-medium">{item.candidateName && item.candidateName !== 'Unknown' ? item.candidateName : 'Candidate'}</span>
                   {item.targetJob && <span>• {item.targetJob}</span>}
                   <span>• {formatDate(item.createdAt)}</span>
                 </div>
@@ -156,34 +159,38 @@ export default function History() {
                 >
                   {formatScore(item.atsScore)}
                 </div>
-                <span className="text-xs text-slate-400 hidden md:block">{item.rating}</span>
+                <span className="text-xs theme-text-tertiary hidden md:block">{item.rating}</span>
               </div>
 
               <div className="flex items-center gap-1.5 shrink-0">
                 <button
                   onClick={(e) => handleOpenInBuilder(e, item.id)}
-                  className="p-2 rounded-xl bg-indigo-500/10 hover:bg-indigo-600 text-indigo-300 hover:text-white border border-indigo-500/20 transition-all cursor-pointer"
+                  className="p-2 rounded-xl flex items-center justify-center transition-all cursor-pointer text-indigo-600 dark:text-indigo-300 border"
+                  style={{ backgroundColor: 'var(--bg-tag)', borderColor: 'var(--border-accent)' }}
                   title="Fix & Edit in Resume Studio"
                 >
                   <FileCode size={16} />
                 </button>
                 <button
                   onClick={() => navigate(`/results/${item.id}`)}
-                  className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-all cursor-pointer"
+                  className="p-2 rounded-xl flex items-center justify-center transition-all cursor-pointer border"
+                  style={{ backgroundColor: 'var(--bg-muted)', borderColor: 'var(--border-base)', color: 'var(--text-secondary)' }}
                   title="View Diagnostic Report"
                 >
                   <Eye size={16} />
                 </button>
                 <button
                   onClick={() => handleDownload(item.id)}
-                  className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-all cursor-pointer"
+                  className="p-2 rounded-xl flex items-center justify-center transition-all cursor-pointer border"
+                  style={{ backgroundColor: 'var(--bg-muted)', borderColor: 'var(--border-base)', color: 'var(--text-secondary)' }}
                   title="Download Report PDF"
                 >
                   <Download size={16} />
                 </button>
                 <button
                   onClick={() => setDeleteTarget(item.id)}
-                  className="p-2 rounded-xl hover:bg-rose-950/30 text-slate-500 hover:text-rose-400 transition-all cursor-pointer"
+                  className="p-2 rounded-xl flex items-center justify-center transition-all cursor-pointer text-[var(--text-tertiary)] hover:text-[var(--text-danger)]"
+                  style={{ backgroundColor: 'var(--bg-muted)' }}
                   title="Delete"
                 >
                   <Trash2 size={16} />
@@ -200,7 +207,7 @@ export default function History() {
         onClose={() => setDeleteTarget(null)}
         title="Delete Analysis"
       >
-        <p className="text-sm text-slate-600 mb-6">
+        <p className="text-sm mb-6" style={{ color: 'var(--text-secondary)' }}>
           Are you sure you want to delete this analysis? This action cannot be undone.
         </p>
         <div className="flex justify-end gap-3">

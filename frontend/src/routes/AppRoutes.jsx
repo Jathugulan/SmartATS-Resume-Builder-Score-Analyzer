@@ -12,6 +12,7 @@ const Templates = lazy(() => import('../pages/Templates'));
 const HowItWorks = lazy(() => import('../pages/HowItWorks'));
 const Pricing = lazy(() => import('../pages/Pricing'));
 const ForgotPassword = lazy(() => import('../pages/ForgotPassword'));
+const Auth = lazy(() => import('../pages/Auth'));
 const Login = lazy(() => import('../pages/Login'));
 const Register = lazy(() => import('../pages/Register'));
 
@@ -52,6 +53,7 @@ export default function AppRoutes() {
         </Route>
 
         {/* ── Auth Routes ── */}
+        <Route path="/auth" element={user ? <Navigate to="/dashboard" replace /> : <Auth />} />
         <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <Login />} />
         <Route path="/register" element={user ? <Navigate to="/dashboard" replace /> : <Register />} />
 
@@ -76,6 +78,9 @@ export default function AppRoutes() {
           {/* Builder & Legacy Tool Routes */}
           <Route path="/builder" element={<Dashboard />} />
           <Route path="/builder/:id" element={<ResumeEditor />} />
+          {/* Dashboard (sidebar) LaTeX Template route — lives INSIDE the protected AppLayout
+              so it keeps the sidebar/navbar and does NOT drop users onto the public page. */}
+          <Route path="/builder/templates" element={<Templates />} />
           <Route path="/upload" element={<UploadPage />} />
           <Route path="/analyzing" element={<Analyzing />} />
           <Route path="/results/:id" element={<Results />} />

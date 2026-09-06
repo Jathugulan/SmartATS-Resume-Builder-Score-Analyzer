@@ -19,11 +19,11 @@ export default function ScoreBreakdown({ breakdown, jdProvided = false }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
-      className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm"
+      className="surface-card rounded-xl border p-6 shadow-sm"
     >
       <div className="flex items-center justify-between mb-5">
-        <h3 className="text-lg font-bold text-slate-800">Score Breakdown</h3>
-        <span className="text-xs text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full font-medium">
+        <h3 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Score Breakdown</h3>
+        <span className="text-xs tone-slate border px-2.5 py-1 rounded-full font-medium">
           {jdProvided ? 'Target JD Matching' : 'General ATS Benchmark'}
         </span>
       </div>
@@ -41,17 +41,17 @@ export default function ScoreBreakdown({ breakdown, jdProvided = false }) {
               transition={{ delay: 0.1 * i }}
             >
               <div className="flex items-center justify-between mb-1">
-                <span className="text-sm font-medium text-slate-700">
+                <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>
                   <span className="mr-1.5">{icon}</span>
                   {label}
                 </span>
-                <span className="text-sm font-semibold text-slate-800">
-                  {formatScore(item.raw)}<span className="text-slate-400 font-normal">/100</span>
-                  <span className="text-slate-300 mx-1">&middot;</span>
-                  <span className="text-blue-600 font-bold">{item.weighted} pts</span>
+                <span className="text-sm font-semibold" style={{ color: 'var(--text-primary)' }}>
+                  {formatScore(item.raw)}<span className="font-normal theme-text-tertiary">/100</span>
+                  <span className="theme-text-tertiary mx-1">&middot;</span>
+                  <span className="tone-text-info font-bold">{item.weighted} pts</span>
                 </span>
               </div>
-              <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+              <div className="w-full rounded-full h-2 overflow-hidden" style={{ backgroundColor: 'var(--bg-muted)' }}>
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${pct}%` }}
@@ -60,7 +60,7 @@ export default function ScoreBreakdown({ breakdown, jdProvided = false }) {
                 />
               </div>
               {item.explanation && (
-                <p className="text-xs text-slate-500 mt-1 leading-relaxed">{item.explanation}</p>
+                <p className="text-xs theme-text-tertiary mt-1 leading-relaxed">{item.explanation}</p>
               )}
             </motion.div>
           );

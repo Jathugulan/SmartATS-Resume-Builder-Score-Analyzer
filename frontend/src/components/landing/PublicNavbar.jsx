@@ -96,15 +96,15 @@ export default function PublicNavbar() {
             ) : (
               <>
                 <Link
-                  to="/login"
+                  to="/auth?mode=signin"
                   className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${
                     isDark ? 'text-slate-200 hover:text-white' : 'text-slate-800 hover:text-slate-950 hover:bg-slate-100'
                   }`}
                 >
-                  Sign In
+                  Log In
                 </Link>
                 <Link
-                  to="/register"
+                  to="/auth?mode=signup"
                   className="px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-lg shadow-indigo-500/25 transition-all active:scale-95"
                 >
                   Get Started
@@ -198,16 +198,16 @@ export default function PublicNavbar() {
                 ) : (
                   <>
                     <Link
-                      to="/login"
+                      to="/auth?mode=signin"
                       onClick={() => setMenuOpen(false)}
                       className={`block w-full text-center py-3 rounded-xl text-sm font-bold border transition-all ${
                         isDark ? 'border-white/15 text-slate-200 hover:bg-white/10' : 'border-slate-300 text-slate-800 hover:bg-slate-100'
                       }`}
                     >
-                      Sign In
+                      Log In
                     </Link>
                     <Link
-                      to="/register"
+                      to="/auth?mode=signup"
                       onClick={() => setMenuOpen(false)}
                       className="block w-full text-center py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 shadow-lg transition-all active:scale-95"
                     >

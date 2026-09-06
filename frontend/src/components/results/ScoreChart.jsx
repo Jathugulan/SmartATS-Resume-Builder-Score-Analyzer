@@ -1,7 +1,8 @@
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 import { formatScore } from '../../utils/score';
 
-const COLORS = ['#2563EB', '#3B82F6', '#60A5FA', '#93C5FD', '#BFDBFE', '#DBEAFE', '#CBD5E1'];
+const COLORS = ['#2563EB', '#3B82F6', '#60A5FA', '#818CF8', '#A78BFA', '#7DD3FC', '#94A3B8'];
+const AXIS_COLOR = 'var(--text-tertiary)';
 
 export default function ScoreChart({ breakdown, jdProvided = false }) {
   if (!breakdown) return null;
@@ -23,17 +24,25 @@ export default function ScoreChart({ breakdown, jdProvided = false }) {
   }));
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+    <div className="surface-card rounded-xl border p-6 shadow-sm">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-bold text-slate-800">Score Visualization</h3>
-        <span className="text-xs text-slate-400">0 - 100 Raw Scale</span>
+        <h3 className="text-lg font-bold" style={{ color: 'var(--text-primary)' }}>Score Visualization</h3>
+        <span className="text-xs" style={{ color: 'var(--text-tertiary)' }}>0 - 100 Raw Scale</span>
       </div>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
-          <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#64748B' }} />
-          <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: '#64748B' }} />
+          <XAxis dataKey="name" tick={{ fontSize: 11, fill: AXIS_COLOR }} stroke="var(--border-separator)" />
+          <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: AXIS_COLOR }} stroke="var(--border-separator)" />
           <Tooltip
-            contentStyle={{ borderRadius: '8px', border: '1px solid #E2E8F0', fontSize: '12px' }}
+            cursor={{ fill: 'var(--bg-muted)' }}
+            contentStyle={{
+              borderRadius: '8px',
+              border: '1px solid var(--border-base)',
+              fontSize: '12px',
+              backgroundColor: 'var(--bg-modal)',
+              color: 'var(--text-primary)',
+            }}
+            labelStyle={{ color: 'var(--text-primary)' }}
             formatter={(value, name, item) => [
               `${formatScore(value)}/100 (${item.payload.weighted} weighted pts)`,
               'Raw Score',
